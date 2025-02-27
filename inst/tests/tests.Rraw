@@ -21076,6 +21076,12 @@ setindex(DT, b)
 # can't use output= here because the print() call is outside withCallingHandlers(...)
 test(2307, { capture.output(print(DT, class = TRUE, show.indices = TRUE)); TRUE })
 
+DT <- data.table(a = 1:2, b = 2:1)
+setindex(DT, b)
+# make sure that print(DT) doesn't warn due to the header missing index column types, #6806
+# can't use output= here because the print() call is outside withCallingHandlers(...)
+test(2307, { capture.output(print(DT, class = TRUE, show.indices = TRUE)); TRUE })
+
 <<<<<<< HEAD
 if (exists("sort_by", "package:base")) {
   # sort_by.data.table
